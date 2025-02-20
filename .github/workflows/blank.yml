@@ -1,0 +1,25 @@
+name: Deploy Config to DigitalOcean
+
+on:
+  push:
+    branches:
+      - main  # Change this if your config file is on a different branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H ${{ secrets.DO_SERVER_IP }} >> ~/.ssh/known_hosts
+
+      - name: Deploy Config File
+        run: |
+          scp config/glance.yaml root@${{ secrets.DO_SERVER_IP }}:~/glance/config/glance.yml
