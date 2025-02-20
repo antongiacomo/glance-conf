@@ -22,4 +22,4 @@ jobs:
 
       - name: Deploy Config File
         run: |
-          scp ./config/glance.yaml root@${{ secrets.DO_SERVER_IP }}:~/glance/config/glance.yml
+          scp ../config/glance.yaml root@${{ secrets.DO_SERVER_IP }}:~/glance/config/glance.yml
