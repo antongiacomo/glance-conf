@@ -62,7 +62,7 @@ pages:
                 color: 200 50 50
                 links:
                   - title: Paradisoditutti
-                    url: https://imperodeisogni.com/
+                    url: https://imperodeisogni.me/
                   - title: DDLItalia
                     url: https://www.ddlitalia.biz/
                   - title: CorsaroNero
@@ -71,7 +71,8 @@ pages:
                     url: https://mircrew-releases.org/
                   - title: Torrentleech
                     url: https://www.torrentleech.org
-
+                  - title: ZLibrary
+                    url: https://z-library.sk/
           - type: rss
             limit: 15
             collapse-after: 5
@@ -101,27 +102,10 @@ pages:
 
       - size: small
         widgets:
-          - type: docker-containers
-            hide-by-default: true
           - type: weather
             location: Milan, Italy
           - type: weather
             location: Bologna, Italy
-          - type: markets
-            markets:
-              - symbol: SPY
-                name: S&P 500
-              - symbol: BTC-USD
-                name: Bitcoin
-              - symbol: NVDA
-                name: NVIDIA
-              - symbol: AAPL
-                name: Apple
-              - symbol: MSFT
-                name: Microsoft
-              - symbol: GOOGL
-                name: Google
-              - symbol: AMD
-                name: AMD
-              - symbol: RDDT
-                name: Reddit
+          - type: docker-containers
+            hide-by-default: true
+

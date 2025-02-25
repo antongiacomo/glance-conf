@@ -1,3 +1,17 @@
+x-service-common: &service-common
+  labels: &labels
+    traefik.enable: true
+    traefik.http.routers.glance.rule: "Host(`${SERVICE_NAME}.media.polione.xyz`)"
+    com.centurylinklabs.watchtower.enable: true
+    glance.name: "${SERVICE_NAME}"
+    glance.icon: "si:glance"
+    glance.url: "https://${SERVICE_NAME}.media.polione.xyz"
+    glance.description: "glance"
+    glance.hide: false
+  networks:
+    - internal
+  restart: unless-stopped
+
 services:
   glance:
     image: glanceapp/glance
@@ -6,16 +20,7 @@ services:
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
       - /var/run/docker.sock:/var/run/docker.sock
-    restart: unless-stopped
-    labels:
-      traefik.enable: true
-      traefik.http.routers.glance.rule: Host(`glance.media.polione.xyz`)
-      com.centurylinklabs.watchtower.enable: true
-    networks:
-      - internal
+    <<: *service-common
 
-
-networks:
-  internal:
-    driver: bridge
-    external: true
+include:
+  - ../common-compose.yml
