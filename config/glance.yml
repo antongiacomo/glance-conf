@@ -73,6 +73,8 @@ pages:
                     url: https://www.torrentleech.org
                   - title: ZLibrary
                     url: https://z-library.sk/
+                  - title: Hd Italia Bits
+                    url: https://hditaliabits.online/
           - type: rss
             limit: 15
             collapse-after: 5
